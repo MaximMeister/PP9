@@ -136,6 +136,25 @@ Reflection:
        return result;
    }
    ```
+
+```mermaid
+graph TD
+  A[Start: x] --> B[Initialize result = 1]
+  B --> C[for Schleife: i = 1 to x]
+  C --> D{i % 2==0?}
+  D -- JA --> E[result = result + i]
+  D -- NEIN --> F[result = result * i]
+  E --> G{result > 1000?}
+  F --> G
+  G -- JA --> H[result = result - 100]
+  G -- NEIN --> I[Weiter mit i++]
+  H --> I
+  I --> C
+  C -->|i > x| J[Return result]
+
+ ```
+
+   
 2. **Function 2:** `evaluate_sequence(int *arr, int len)` in `solutions/algorithm_two.c`:
 
    ```c
@@ -153,6 +172,24 @@ Reflection:
        }
    }
    ```
+
+
+```mermaid
+graph TD
+A[Start:]-->B[state = 0 & i = 0]
+B-->D{ i < len ?}
+D --NEIN -->H[Wert von state]
+D --JA -->C[Wert von der Array an der Position i]
+C --Negativ-->G[state = -1]
+C --Null-->E[state = 0]
+C --Positiv-->F[state = 1]
+G -->I[i++]
+E -->I
+F -->H
+H -- Ist i 1 -->J[return true]
+H -- i ist nicht 1 -->K[return false]
+```
+   
 3. For each function, draw a **Mermaid** flowchart capturing loops, branches, and switch logic. Include your Mermaid code in a Markdown file under `solutions/`.
 
 **Example Skeleton:**
