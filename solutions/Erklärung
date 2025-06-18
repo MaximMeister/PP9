@@ -1,0 +1,49 @@
+ Erklärung zu der Task 2:
+
+Mermaid Chart
+
+  A[Start: x] --> B[Initialize result = 1]
+  B --> C{i = 1 to x?}
+  C -- No --> D[Return result]
+  C -- Yes --> E{i % 2 == 0?}
+  E -- Yes --> F[result += i]
+  E -- No --> G[result *= i]
+  F --> H[result > 1000?]
+  G --> H
+  H -- Yes --> I[result -= 100]
+  H -- No --> J[Increment i]
+  I --> J
+  J --> C
+
+
+flowchart_impl.c
+
+  #include <stdio.h>
+
+void flowchart_impl(int x) {
+
+    int result = 1;
+    int i = 1;
+
+    while (i <= x) {
+
+        if (i%2==0) {result += i;}
+
+        else {result *= i;}
+
+        if (result > 1000) {result -= 100;}
+
+        i++;
+    }
+
+    printf("Result: %i\n", result);
+}
+
+Das C Programm flowchart_impl.c beginnt zunächst mit der Übernahme eines Wertes für X, dies geschieht bei A im Mermaid Chart.
+Anschließend werden die Variablen i und result = 1 gesetzt (B) Ist dies nicht der Fall so wird sofort zum printf Return result gesprungen (D) 
+Andernfalls beginnt die while Schleife solange die Bedienung x größergleich i gilt (C) Wenn i durch 2 teilbar ist und es keinen Restwert
+(modulo Operator) gibt so wird dies mit dem ersten if geprüft (E) Ist dies der Falls (else) so wird mit (F) result um genau i erhöht.
+Wenn bei der Modulo Operator ein Restwert auftaucht, so wird result mit i selbst multipliziert (G)
+Im zweiten if wird unter der Bedingung, dass result größer als 1000 sei (H) result um 100 verringert (I)
+Anschließend wird am Ende der while Schleife i um 1 erhöht (J)  Sofern die Bedingungen von der Schleife weitergegeben sind (C),
+erfolgt ein erneuter Durchlauf.

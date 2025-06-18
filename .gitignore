@@ -1,0 +1,13 @@
+# Objektdateien
+*.o
+
+# Ausführbare Dateien
+use_for
+use_if
+use_switch
+flowchart_exec
+main
+
+# Backup-Dateien, Temp-Files
+*~
+*.swp
